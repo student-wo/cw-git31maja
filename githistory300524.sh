@@ -143,6 +143,34 @@ git remote rename zmiananazwy zn
 git remote remove zn
 ########
 # Tworzenie etykiet, ma sens jak punkt zamyka pewien etap rozwoju, np. dana wersja programu
-git tag -a v2.0 -m "Probna etykieta" # tzw annotated tag, z info o komitujacym itp...
+git tag -a v2.0 -m "Probna etykieta" # tzw "annotated" tag, z info o komitujacym itp...
 # sprawdzenie info
 git show v2.0
+# zmiana w plikach komit i Etykieta "light"
+git tag v2.1
+# jw z dodaniem v3.0
+# wyswietlenie dostepnych etykiet
+git tag
+# tylko etykiety pasujace do wzorca
+git tag -l "v2*"
+# info z etykiety lekkiej - tylko info o komicie
+git show
+# Tagowanie starych komitow
+# najpierw sprawdzenie historii
+git log --pretty=oneline
+# samo tagowanie, wymaga podania checksumy - wystarczy poczatkowy fragment
+git tag -a v1.0 928c64d # "annotated" tag
+# sprawdzenie
+git tag
+git show v1.0
+# Udostepnianie etykiet - nie sa automatycznie wysylane przez "push"
+git push origin v1.0
+# Udostepnianie wszystkich etykiet
+git push origin --tags
+# Usuwanie etykiet, TYLKO lokalne
+git tag -d v1.2
+# usuwanie ZDALNYCH
+# sposob 1.
+git push origin :refs/tags/v1.4
+# sposob 2.
+git push origin --delete v1.3

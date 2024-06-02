@@ -129,3 +129,20 @@ git mv ex5.sh ex55.sh
 # Pobranie zmian z GitHub
 # trzeba ustawic co robic z roznicami w pliku zdale vs lokalne
 git config pull.rebase false # domyslne ustawienie, (fast-forward if possible, else create a merge commit)
+# O tym bedzie trzeba doczytac!
+# Info o zdalnym repo
+git remote show origin
+# Zalozenie nowego repo zdalnego, ten sam uzytkownik wiec bez problemu
+# GitHub daje zreszta dokladne komendy do basha
+########
+# Dodanie zdalnego repo z inna nazwa niz origin'
+git remote add zmiananazwy git@github.com:student-wo/zmiananazwy.git
+# zmiana nazwy
+git remote rename zmiananazwy zn
+# usuniecie linku do zdalnego repo, NIE usuwa repo z GitHub
+git remote remove zn
+########
+# Tworzenie etykiet, ma sens jak punkt zamyka pewien etap rozwoju, np. dana wersja programu
+git tag -a v2.0 -m "Probna etykieta" # tzw annotated tag, z info o komitujacym itp...
+# sprawdzenie info
+git show v2.0
